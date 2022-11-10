@@ -2,22 +2,23 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
-        stack<char>st;
-        string ans;
-        for(int i=0;i<s.size();i++){
-            if(!st.empty() && st.top()==s[i]){
-                st.pop();
-            }
-            else{
-                st.push(s[i]);
-            }
+    string ans = "";
+    for (auto &i: s) {
+        //if current element of original string matches to last appended element of ans
+        if (i == ans.back()){
+            //remove that element from ans
+            ans.pop_back();
         }
-        while(!st.empty()){
-            ans = st.top()+ ans;
-            st.pop();
+        else{
+            //append that element to ans
+            ans += i;
         }
-        return ans;
     }
+    return ans;
+}
 };
+// Time COmplexity O(n)
+
+
 // Time COmplexity O(n)
 
